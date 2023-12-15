@@ -1,4 +1,4 @@
-FROM centos:7
+FROM arm64v8/centos:centos7
 MAINTAINER wanghao <wanghao@ninghao.net>
 
 # 安装必备工具
@@ -8,7 +8,8 @@ RUN yum install wget curl perl gcc pcre-devel zlib-devel make -y
 WORKDIR /usr/local/src
 
 # 下载 openssl 源
-RUN curl -L --progress https://www.openssl.org/source/openssl-1.0.2-latest.tar.gz | tar xz
+# RUN curl -L --progress https://www.openssl.org/source/openssl-1.0.2-latest.tar.gz | tar xz
+RUN curl -L --progress https://ftp.openssl.org/source/old/1.0.2/openssl-1.0.2.tar.gz | tar xz
 RUN mv openssl*/ openssl/
 
 # 下载 nginx 源
